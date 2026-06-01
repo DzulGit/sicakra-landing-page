@@ -4,32 +4,32 @@ import { useEffect, useState } from "react";
 
 const testimonials = [
   {
-    quote: "Optimus transformed our deployment pipeline. What used to take hours now happens in seconds.",
-    author: "Sarah Chen",
-    role: "CTO",
-    company: "Meridian Labs",
-    metric: "10x faster deployments",
+    quote: "Sejak pakai Sicakra, streaming di rumah lancar tanpa buffering. Pasang cepat dan teknisinya ramah.",
+    author: "Dewi Lestari",
+    role: "Ibu Rumah Tangga",
+    company: "Jakarta",
+    metric: "Streaming tanpa buffering",
   },
   {
-    quote: "The developer experience is unmatched. Our team's productivity has never been higher.",
-    author: "Marcus Webb",
-    role: "Engineering Lead",
-    company: "Flux Systems",
-    metric: "40% more features shipped",
+    quote: "Koneksi stabil untuk kantor kecil kami. Video conference tanpa drop, upload file besar jadi mudah.",
+    author: "Rudi Setiawan",
+    role: "Owner",
+    company: "Kafe Kopi Kita",
+    metric: "Ping rendah & stabil",
   },
   {
-    quote: "Finally, infrastructure that scales with our ambition. Zero downtime since we switched.",
-    author: "Elena Rodriguez",
-    role: "VP Engineering",
-    company: "Beacon AI",
-    metric: "99.99% uptime",
+    quote: "Dukungan teknis 24/7 sangat membantu. Masalah cepat teratasi, tim datang sesuai jadwal.",
+    author: "Siti Aminah",
+    role: "Manajer IT",
+    company: "SMK Nusantara",
+    metric: "Support 24/7",
   },
   {
-    quote: "The integrations are seamless. We connected our entire stack in a single afternoon.",
-    author: "James Liu",
-    role: "Founder",
-    company: "Prism Analytics",
-    metric: "50+ integrations used",
+    quote: "Paket unlimited benar-benar tanpa kuota. Harga transparan dan pemasangan rapi.",
+    author: "Andi Pratama",
+    role: "Pelaku UKM",
+    company: "Toko Elektronik Surya",
+    metric: "100% Unlimited",
   },
 ];
 
@@ -148,7 +148,7 @@ export function TestimonialsSection() {
         <div className="flex gap-16 items-center marquee">
           {[...Array(2)].map((_, setIdx) => (
             <div key={setIdx} className="flex gap-16 items-center shrink-0">
-              {["Meridian Labs", "Flux Systems", "Beacon AI", "Prism Analytics", "Nova Tech", "Quantum Corp", "Atlas Digital", "Vertex Labs"].map(
+              {["Kafe Kopi Kita", "SMK Nusantara", "Toko Elektronik Surya", "Klinik Sehat", "Hotel Bintang", "Startup Lokal", "Coworking Hub", "Restoran Aroma"].map(
                 (company) => (
                   <span
                     key={`${setIdx}-${company}`}

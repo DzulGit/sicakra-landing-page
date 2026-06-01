@@ -6,8 +6,9 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Fitur", href: "#features" },
-  { name: "Bagaimana Itu Bekerja", href: "#how-it-works" },
-  { name: "Developers", href: "#developers" },
+  { name: "Cara Kerja", href: "#how-it-works" },
+  { name: "Infrastruktur", href: "#developers" },
+  { name: "Partner", href: "#integrations" },
   { name: "Harga", href: "#pricing" },
 ];
 
@@ -66,13 +67,13 @@ export function Navigation() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a href="#" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
-              Sign in
+              Cek Jangkauan
             </a>
             <Button
               size="sm"
               className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
             >
-              Start creating
+              Cek Jangkauan & Pasang
             </Button>
           </div>
 
@@ -134,13 +135,13 @@ export function Navigation() {
               className="flex-1 rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Sign in
+              Cek Jangkauan
             </Button>
             <Button 
               className="flex-1 bg-foreground text-background rounded-full h-14 text-base"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Start creating
+              Cek Jangkauan & Pasang
             </Button>
           </div>
         </div>

@@ -3,18 +3,18 @@
 import { useEffect, useState, useRef } from "react";
 
 const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+  { name: "Netflix", category: "Streaming" },
+  { name: "YouTube", category: "Streaming" },
+  { name: "Spotify", category: "Audio" },
+  { name: "Shopee", category: "E‑commerce" },
+  { name: "Gopay", category: "Pembayaran" },
+  { name: "Visa", category: "Pembayaran" },
+  { name: "PayPal", category: "Pembayaran" },
+  { name: "Tokopedia", category: "E‑commerce" },
+  { name: "Zoom", category: "Video Conference" },
+  { name: "RIOT", category: "Gaming" },
+  { name: "OBS", category: "Streaming" },
+  { name: "Prime Video", category: "Streaming" },
 ];
 
 export function IntegrationsSection() {
@@ -44,16 +44,16 @@ export function IntegrationsSection() {
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Integrations
+            Partner
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+            Partner Ekosistem
             <br />
-            you already use.
+            Layanan streaming & pembayaran yang kompatibel
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            Sicakra teroptimasi untuk layanan populer — streaming lancar, gaming responsif, dan pembayaran cepat.
           </p>
         </div>
 

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { AnimatedSphere } from "./animated-sphere";
 
-const words = ["create", "build", "scale", "ship"];
+const words = ["koneksi", "kecepatan", "stabilitas", "sinyal"];
 
 export function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -70,46 +70,24 @@ export function HeroSection() {
         
         {/* Main headline */}
         <div className="mb-12">
-          <h1 
-            className={`text-[clamp(3rem,12vw,10rem)] font-display leading-[0.9] tracking-tight transition-all duration-1000 ${
+          <h1
+            className={`text-[clamp(2rem,8vw,5rem)] font-display leading-[0.95] tracking-tight transition-all duration-1000 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <span className="block">The platform</span>
-            <span className="block">
-              to{" "}
-              <span className="relative inline-block">
-                <span 
-                  key={wordIndex}
-                  className="inline-flex"
-                >
-                  {words[wordIndex].split("").map((char, i) => (
-                    <span
-                      key={`${wordIndex}-${i}`}
-                      className="inline-block animate-char-in"
-                      style={{
-                        animationDelay: `${i * 50}ms`,
-                      }}
-                    >
-                      {char}
-                    </span>
-                  ))}
-                </span>
-                <span className="absolute -bottom-2 left-0 right-0 h-3 bg-foreground/10" />
-              </span>
-            </span>
+            <span className="block">Internet Super Cepat,</span>
+            <span className="block">Aktivitas Tanpa Batas bersama Sicakra</span>
           </h1>
         </div>
         
         {/* Description */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-end">
-          <p 
+          <p
             className={`text-xl lg:text-2xl text-muted-foreground leading-relaxed max-w-xl transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Your toolkit to stop configuring and start innovating. 
-            Securely build, deploy, and scale the best experiences.
+            Nikmati koneksi Wi-Fi rumah dan bisnis yang stabil, anti-lemot, dan 100% True Unlimited. Saatnya beralih ke internet yang mengerti kebutuhanmu.
           </p>
           
           {/* CTAs */}
@@ -118,11 +96,11 @@ export function HeroSection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group"
             >
-              Start free trial
+              Cek Jangkauan & Pasang
               <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
             <Button 

@@ -1,31 +1,26 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Zap, Infinity, Headphones } from "lucide-react";
 
 const features = [
   {
     number: "01",
-    title: "Instant Deployment",
-    description: "Push to production in seconds. Our edge network ensures your applications load instantly, anywhere in the world.",
-    visual: "deploy",
+    title: "Kecepatan Ngebut & Stabil",
+    description: "Koneksi fiber dengan latency rendah, ideal untuk gaming, streaming, dan kerja remote tanpa putus.",
+    icon: Zap,
   },
   {
     number: "02",
-    title: "AI-Native Workflows",
-    description: "Build intelligent applications with built-in AI capabilities. From inference to training, everything scales automatically.",
-    visual: "ai",
+    title: "100% Kuota Unlimited",
+    description: "Tanpa batasan kuota atau throttling. Nikmati akses tanpa khawatir selama 24/7.",
+    icon: Infinity,
   },
   {
     number: "03",
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly. Live preview, instant feedback, and version control that actually makes sense.",
-    visual: "collab",
-  },
-  {
-    number: "04",
-    title: "Enterprise Security",
-    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data stays yours.",
-    visual: "security",
+    title: "Layanan Teknisi 24/7",
+    description: "Tim pemasangan dan support siap membantu kapan saja, layanan cepat dan profesional.",
+    icon: Headphones,
   },
 ];
 
@@ -206,21 +201,6 @@ function SecurityVisual() {
   );
 }
 
-function AnimatedVisual({ type }: { type: string }) {
-  switch (type) {
-    case "deploy":
-      return <DeployVisual />;
-    case "ai":
-      return <AIVisual />;
-    case "collab":
-      return <CollabVisual />;
-    case "security":
-      return <SecurityVisual />;
-    default:
-      return <DeployVisual />;
-  }
-}
-
 function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -262,10 +242,13 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
             </p>
           </div>
           
-          {/* Visual */}
+          {/* Icon */}
           <div className="flex justify-center lg:justify-end">
-            <div className="w-48 h-40 text-foreground">
-              <AnimatedVisual type={feature.visual} />
+            <div className="w-24 h-24 text-foreground flex items-center justify-center">
+              {feature.icon && (() => {
+                const Icon = feature.icon as any;
+                return <Icon className="w-12 h-12" />;
+              })()}
             </div>
           </div>
         </div>
@@ -301,16 +284,16 @@ export function FeaturesSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Capabilities
+            Keunggulan
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everything you need.
+            Koneksi yang diandalkan.
             <br />
-            <span className="text-muted-foreground">Nothing you don&apos;t.</span>
+            <span className="text-muted-foreground">Untuk rumah dan bisnis.</span>
           </h2>
         </div>
 

@@ -21,9 +21,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Optimus - Platform to Create',
-  description: 'The creative platform for teams who ship. Build, deploy, and scale with unprecedented velocity.',
-  generator: 'v0.app',
+  title: 'Sicakra - Internet Super Cepat untuk Rumah & Bisnis',
+  description: 'Sicakra menyediakan layanan internet fiber dan Wi-Fi terbaik dengan pemasangan cepat dan dukungan teknisi 24/7.',
+  generator: 'sicakra.landing',
 }
 
 export default function RootLayout({

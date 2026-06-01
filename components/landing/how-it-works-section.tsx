@@ -4,39 +4,19 @@ import { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
-    number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
-
-optimus.connect({
-  source: 'your-database',
-  sync: true
-})`,
+    number: "1",
+    title: "Pilih Paket",
+    description: "Pilih paket yang sesuai kebutuhan — rumah, bisnis, atau dedicated fiber.",
   },
   {
-    number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
-})`,
+    number: "2",
+    title: "Cek Area & Registrasi",
+    description: "Masukkan alamat untuk cek ketersediaan dan lakukan registrasi online singkat.",
   },
   {
-    number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
-})
-
-// Deployed to 12 regions`,
+    number: "3",
+    title: "Pemasangan Cepat",
+    description: "Teknisi akan datang dan memasang dalam waktu singkat, konfirmasi lewat WA/telepon.",
   },
 ];
 
@@ -88,16 +68,16 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            Cara Kerja
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Three steps.
+            3 Langkah Mudah.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">Dari pilih paket hingga pemasangan.</span>
           </h2>
         </div>
 
@@ -141,53 +121,21 @@ export function HowItWorksSection() {
             ))}
           </div>
 
-          {/* Code display */}
+          {/* Illustration / Summary */}
           <div className="lg:sticky lg:top-32 self-start">
-            <div className="border border-background/10 overflow-hidden">
-              {/* Window header */}
-              <div className="px-6 py-4 border-b border-background/10 flex items-center justify-between">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
-                  <div className="w-3 h-3 rounded-full bg-background/20" />
+            <div className="border border-background/10 p-8 min-h-[220px] bg-background">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-md bg-foreground/5 flex items-center justify-center">
+                  <span className="font-mono text-foreground">{steps[activeStep].number}</span>
                 </div>
-                <span className="text-xs font-mono text-background/40">workflow.ts</span>
+                <div>
+                  <h3 className="text-xl font-display">{steps[activeStep].title}</h3>
+                  <p className="text-sm text-muted-foreground mt-2">{steps[activeStep].description}</p>
+                </div>
               </div>
 
-              {/* Code content */}
-              <div className="p-8 font-mono text-sm min-h-[280px]">
-                <pre className="text-background/70">
-                  {steps[activeStep].code.split('\n').map((line, lineIndex) => (
-                    <div 
-                      key={`${activeStep}-${lineIndex}`} 
-                      className="leading-loose code-line-reveal"
-                      style={{ 
-                        animationDelay: `${lineIndex * 80}ms`,
-                      }}
-                    >
-                      <span className="text-background/20 select-none w-8 inline-block">{lineIndex + 1}</span>
-                      <span className="inline-flex">
-                        {line.split('').map((char, charIndex) => (
-                          <span
-                            key={`${activeStep}-${lineIndex}-${charIndex}`}
-                            className="code-char-reveal"
-                            style={{
-                              animationDelay: `${lineIndex * 80 + charIndex * 15}ms`,
-                            }}
-                          >
-                            {char === ' ' ? '\u00A0' : char}
-                          </span>
-                        ))}
-                      </span>
-                    </div>
-                  ))}
-                </pre>
-              </div>
-
-              {/* Status */}
-              <div className="px-6 py-4 border-t border-background/10 flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs font-mono text-background/40">Ready</span>
+              <div className="mt-6">
+                <p className="text-sm text-muted-foreground">Proses cepat dan transparan. Setelah registrasi, tim kami akan menghubungi untuk konfirmasi jadwal pemasangan.</p>
               </div>
             </div>
           </div>

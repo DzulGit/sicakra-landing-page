@@ -3,36 +3,35 @@
 import { ArrowUpRight } from "lucide-react";
 import { AnimatedWave } from "./animated-wave";
 
-const footerLinks = {
-  Product: [
-    { name: "Features", href: "#features" },
-    { name: "How it works", href: "#how-it-works" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Integrations", href: "#integrations" },
+type FooterLink = { name: string; href: string; badge?: string };
+
+const footerLinks: Record<string, FooterLink[]> = {
+  Produk: [
+    { name: "Fitur", href: "#features" },
+    { name: "Cara Kerja", href: "#how-it-works" },
+    { name: "Harga", href: "#pricing" },
+    { name: "Partner", href: "#integrations" },
   ],
-  Developers: [
-    { name: "Documentation", href: "#developers" },
-    { name: "API Reference", href: "#" },
-    { name: "SDK", href: "#developers" },
-    { name: "Status", href: "#" },
+  Layanan: [
+    { name: "Pemasangan", href: "#" },
+    { name: "Support 24/7", href: "#" },
+    { name: "SLA", href: "#" },
   ],
-  Company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#", badge: "Hiring" },
-    { name: "Contact", href: "#" },
+  Perusahaan: [
+    { name: "Tentang Sicakra", href: "#" },
+    { name: "Karir", href: "#" },
+    { name: "Hubungi", href: "#" },
   ],
   Legal: [
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
-    { name: "Security", href: "#security" },
+    { name: "Kebijakan Privasi", href: "#" },
+    { name: "Syarat & Ketentuan", href: "#" },
   ],
 };
 
 const socialLinks = [
+  { name: "WhatsApp", href: "#" },
+  { name: "Instagram", href: "#" },
   { name: "Twitter", href: "#" },
-  { name: "GitHub", href: "#" },
-  { name: "LinkedIn", href: "#" },
 ];
 
 export function FooterSection() {
@@ -42,7 +41,7 @@ export function FooterSection() {
       <div className="absolute inset-0 h-64 opacity-20 pointer-events-none overflow-hidden">
         <AnimatedWave />
       </div>
-      
+
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Main Footer */}
         <div className="py-16 lg:py-24">
@@ -50,12 +49,12 @@ export function FooterSection() {
             {/* Brand Column */}
             <div className="col-span-2">
               <a href="#" className="inline-flex items-center gap-2 mb-6">
-                <span className="text-2xl font-display">Optimus</span>
-                <span className="text-xs text-muted-foreground font-mono">TM</span>
+                <span className="text-2xl font-display">Sicakra</span>
+                <span className="text-xs text-muted-foreground font-mono">ISP</span>
               </a>
 
               <p className="text-muted-foreground leading-relaxed mb-8 max-w-xs">
-                The platform for teams who ship. Build, deploy, and scale with unprecedented velocity.
+                Penyedia layanan internet fiber & Wi‑Fi untuk rumah dan bisnis dengan pemasangan cepat dan dukungan 24/7.
               </p>
 
               {/* Social Links */}
@@ -85,7 +84,7 @@ export function FooterSection() {
                         className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-2"
                       >
                         {link.name}
-                        {"badge" in link && link.badge && (
+                        {link.badge && (
                           <span className="text-xs px-2 py-0.5 bg-foreground text-background rounded-full">
                             {link.badge}
                           </span>
@@ -102,7 +101,7 @@ export function FooterSection() {
         {/* Bottom Bar */}
         <div className="py-8 border-t border-foreground/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            2025 Optimus. All rights reserved.
+            © 2026 Sicakra. All rights reserved.
           </p>
 
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
