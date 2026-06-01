@@ -5,26 +5,26 @@ import { useEffect, useRef, useState } from "react";
 const features = [
   {
     number: "01",
-    title: "Instant Deployment",
-    description: "Push to production in seconds. Our edge network ensures your applications load instantly, anywhere in the world.",
+    title: "Kecepatan Stabil Maksimal",
+    description: "Lupakan buffering dan koneksi putus-putus. Nikmati bandwidth prioritas untuk kelancaran streaming 4K, gaming, dan aktivitas berat lainnya tanpa penurunan kecepatan.",
     visual: "deploy",
   },
   {
     number: "02",
-    title: "AI-Native Workflows",
-    description: "Build intelligent applications with built-in AI capabilities. From inference to training, everything scales automatically.",
+    title: "Infrastruktur Fiber Optik",
+    description: "Didukung oleh teknologi jaringan fiber optik terbaru yang memastikan distribusi sinyal Wi-Fi tersebar merata, kuat, dan anti-lelet ke setiap sudut ruangan Anda.",
     visual: "ai",
   },
   {
     number: "03",
-    title: "Real-time Collaboration",
-    description: "Work together seamlessly. Live preview, instant feedback, and version control that actually makes sense.",
+    title: "Dukungan Teknisi 24/7",
+    description: "Tim ahli kami selalu siap sedia siang dan malam. Kami memberikan jalur komunikasi langsung untuk respons cepat setiap kendala, memastikan Anda selalu terhubung.",
     visual: "collab",
   },
   {
     number: "04",
-    title: "Enterprise Security",
-    description: "Bank-grade encryption, SOC 2 compliance, and granular access controls. Your data stays yours.",
+    title: "Keamanan Data Terjamin",
+    description: "Berselancar dengan tenang. Jaringan Sicakra dilengkapi proteksi bawaan tingkat tinggi untuk melindungi perangkat dan privasi keluarga maupun bisnis Anda dari ancaman digital.",
     visual: "security",
   },
 ];
@@ -301,16 +301,16 @@ export function FeaturesSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Capabilities
+            Keunggulan Layanan
           </span>
           <h2
             className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            Everything you need.
+            Semua yang kamu butuh.
             <br />
-            <span className="text-muted-foreground">Nothing you don&apos;t.</span>
+            <span className="text-muted-foreground">Tanpa syarat yang ribet.</span>
           </h2>
         </div>
 
