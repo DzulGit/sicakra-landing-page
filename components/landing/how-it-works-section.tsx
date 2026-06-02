@@ -4,39 +4,46 @@ import { useEffect, useRef, useState } from "react";
 
 const steps = [
   {
-    number: "I",
-    title: "Connect your tools",
-    description: "Integrate with your existing stack in minutes. We support 200+ data sources out of the box.",
-    code: `import { optimus } from '@optimus/core'
+    number: "01",
+    title: "Pilih Paket Layanan",
+    description: "Sesuaikan kecepatan dengan kebutuhan rumah atau bisnismu. Semua paket didukung infrastruktur fiber optik dan 100% kuota Unlimited.",
+    code: `> CHECKING NETWORK COVERAGE...
 
-optimus.connect({
-  source: 'your-database',
-  sync: true
-})`,
+[SYSTEM] Scanning location...
+[SYSTEM] Fiber Optic Status: AVAILABLE
+[SYSTEM] Node: Sicakra_Main_Router_01
+[SYSTEM] Max Capacity: Up to 1000 Mbps
+
+> Status: Ready for Installation`
   },
   {
-    number: "II",
-    title: "Build your workflow",
-    description: "Design powerful automations with our visual builder or write code directly.",
-    code: `optimus.workflow('process', {
-  trigger: 'event',
-  actions: [
-    'validate',
-    'transform', 
-    'deliver'
-  ]
-})`,
+    number: "02",
+    title: "Cek Area & Registrasi",
+    description: "Isi formulir pendaftaran singkat. Tim kami akan segera memverifikasi ketersediaan jaringan Sicakra di titik lokasimu.",
+    code: `> Pinging sicakra.fiber.net [10.0.0.1]...
+
+Reply from 10.0.0.1: bytes=32 time=1ms
+Reply from 10.0.0.1: bytes=32 time<1ms
+Reply from 10.0.0.1: bytes=32 time=1ms
+
+Ping statistics:
+  Packets: Sent = 3, Received = 3, Lost = 0
+  0% packet loss. Excellent connection.`
   },
   {
-    number: "III",
-    title: "Ship to production",
-    description: "Deploy globally with zero configuration. Your app goes live in under 30 seconds.",
-    code: `optimus.deploy({
-  target: 'production',
-  regions: 'auto'
-})
+    number: "03",
+    title: "Instalasi & Langsung Aktif",
+    description: "Teknisi ahli kami datang untuk melakukan pemasangan. Wi-Fi langsung aktif dan siap digunakan untuk ngebut hari itu juga!",
+    code: `> RUNNING SPEEDTEST...
 
-// Deployed to 12 regions`,
+Server: Sicakra Network (Local)
+Connection: Fiber to the Home (FTTH)
+
+Download : 100.5 Mbps 
+Upload   : 100.2 Mbps 
+Latency  : 2ms 
+
+> Result: CONNECTION ACTIVE & STABLE`
   },
 ];
 
@@ -88,16 +95,15 @@ export function HowItWorksSection() {
         <div className="mb-16 lg:mb-24">
           <span className="inline-flex items-center gap-3 text-sm font-mono text-background/50 mb-6">
             <span className="w-8 h-px bg-background/30" />
-            Process
+            Cara berlangganan.
           </span>
           <h2
-            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            }`}
+            className={`text-4xl lg:text-6xl font-display tracking-tight transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
           >
-            Three steps.
+            Tiga langkah mudah.
             <br />
-            <span className="text-background/50">Infinite possibilities.</span>
+            <span className="text-background/50">Internet tanpa batas.</span>
           </h2>
         </div>
 
@@ -110,9 +116,8 @@ export function HowItWorksSection() {
                 key={step.number}
                 type="button"
                 onClick={() => setActiveStep(index)}
-                className={`w-full text-left py-8 border-b border-background/10 transition-all duration-500 group ${
-                  activeStep === index ? "opacity-100" : "opacity-40 hover:opacity-70"
-                }`}
+                className={`w-full text-left py-8 border-b border-background/10 transition-all duration-500 group ${activeStep === index ? "opacity-100" : "opacity-40 hover:opacity-70"
+                  }`}
               >
                 <div className="flex items-start gap-6">
                   <span className="font-display text-3xl text-background/30">{step.number}</span>
@@ -123,11 +128,11 @@ export function HowItWorksSection() {
                     <p className="text-background/60 leading-relaxed">
                       {step.description}
                     </p>
-                    
+
                     {/* Progress indicator */}
                     {activeStep === index && (
                       <div className="mt-4 h-px bg-background/20 overflow-hidden">
-                        <div 
+                        <div
                           className="h-full bg-background w-0"
                           style={{
                             animation: 'progress 5s linear forwards'
@@ -158,10 +163,10 @@ export function HowItWorksSection() {
               <div className="p-8 font-mono text-sm min-h-[280px]">
                 <pre className="text-background/70">
                   {steps[activeStep].code.split('\n').map((line, lineIndex) => (
-                    <div 
-                      key={`${activeStep}-${lineIndex}`} 
+                    <div
+                      key={`${activeStep}-${lineIndex}`}
                       className="leading-loose code-line-reveal"
-                      style={{ 
+                      style={{
                         animationDelay: `${lineIndex * 80}ms`,
                       }}
                     >
