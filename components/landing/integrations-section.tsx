@@ -3,18 +3,18 @@
 import { useEffect, useState, useRef } from "react";
 
 const integrations = [
-  { name: "GitHub", category: "Version Control" },
-  { name: "Slack", category: "Communication" },
-  { name: "Stripe", category: "Payments" },
-  { name: "PostgreSQL", category: "Database" },
-  { name: "Redis", category: "Cache" },
-  { name: "AWS", category: "Cloud" },
-  { name: "MongoDB", category: "Database" },
-  { name: "Vercel", category: "Hosting" },
-  { name: "Figma", category: "Design" },
-  { name: "Linear", category: "Project Management" },
-  { name: "Notion", category: "Documentation" },
-  { name: "OpenAI", category: "AI/ML" },
+  { name: "Netflix", category: "Streaming 4K" },
+  { name: "YouTube", category: "Video HD" },
+  { name: "Mobile Legends", category: "Ping Rendah" },
+  { name: "TikTok", category: "Scrolling Lancar" },
+  { name: "Instagram", category: "Bebas Delay" },
+  { name: "Zoom Meeting", category: "Kuliah & WFH" },
+  { name: "Disney+ Hotstar", category: "Hiburan Rumah" },
+  { name: "Valorant", category: "0% Packet Loss" },
+  { name: "Google Workspace", category: "Produktivitas" },
+  { name: "PlayStation Network", category: "Konsol Game" },
+  { name: "WhatsApp", category: "Komunikasi" },
+  { name: "Spotify", category: "Musik Streaming" },
 ];
 
 export function IntegrationsSection() {
@@ -38,27 +38,26 @@ export function IntegrationsSection() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <div
-          className={`text-center max-w-3xl mx-auto mb-16 lg:mb-24 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+          className={`text-center max-w-3xl mx-auto mb-16 lg:mb-24 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
           <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
             <span className="w-8 h-px bg-foreground/30" />
-            Integrations
+            Kompatibilitas Jaringan
             <span className="w-8 h-px bg-foreground/30" />
           </span>
           <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
-            Works with everything
+            Lancar untuk semua
             <br />
-            you already use.
+            platform favoritmu.
           </h2>
           <p className="text-xl text-muted-foreground">
-            200+ pre-built integrations. Connect your entire stack in minutes.
+            Koneksi yang dioptimalkan khusus untuk kenyamanan streaming, gaming, dan aktivitas harianmu tanpa buffering.
           </p>
         </div>
 
       </div>
-      
+
       {/* Full-width marquees outside container */}
       <div className="w-full mb-6">
         <div className="flex gap-6 marquee">
@@ -79,7 +78,7 @@ export function IntegrationsSection() {
           ))}
         </div>
       </div>
-      
+
       {/* Reverse marquee */}
       <div className="w-full">
         <div className="flex gap-6 marquee-reverse">
