@@ -5,52 +5,53 @@ import { Copy, Check } from "lucide-react";
 
 const codeExamples = [
   {
-    label: "Install",
-    code: `npm install @optimus/sdk
+    label: "01. Data Diri",
+    code: `> INPUT CUSTOMER DATA...
 
-# or
-yarn add @optimus/sdk
-pnpm add @optimus/sdk`,
+Nama      : [Wajib Diisi]
+WhatsApp  : [Wajib Diisi]
+Lokasi    : Sleman, Yogyakarta
+
+* Pastikan nomor WhatsApp aktif untuk konfirmasi teknisi.`,
   },
   {
-    label: "Initialize",
-    code: `import { Optimus } from '@optimus/sdk'
+    label: "02. Pilih Paket",
+    code: `> SELECT INTERNET PLAN...
 
-const optimus = new Optimus({
-  apiKey: process.env.OPTIMUS_KEY
-})`,
+[ ] Sicakra Lite  - 30 Mbps
+[ ] Sicakra Reguler - 50 Mbps
+[ ] Sicakra Pro     - 100 Mbps
+
+* Semua paket True Unlimited tanpa batasan FUP.`,
   },
   {
-    label: "Deploy",
-    code: `const app = await optimus.deploy({
-  name: 'my-app',
-  region: 'auto',
-  scaling: {
-    min: 1,
-    max: 100
-  }
-})
+    label: "03. Pasang",
+    code: `> DEPLOYING TECHNICIAN...
 
-console.log('Live at:', app.url)`,
+Status Jaringan : Tersedia (Fiber Optik)
+Estimasi Kerja  : Max 24 Jam setelah registrasi
+Biaya Registrasi: Rp 0 (Gratis Alat & Jalur)
+
+Ketik "GAS" untuk konfirmasi penjadwalan.`,
   },
 ];
 
 const features = [
-  { 
-    title: "TypeScript native", 
-    description: "Full type safety with auto-generated types."
+  {
+    title: "Proses Instan",
+    description: "Isi form dalam 2 menit, tim langsung konfirmasi via WA."
   },
-  { 
-    title: "Zero config", 
-    description: "Sensible defaults that just work."
+  {
+    title: "Tanpa Biaya Siluman",
+    description: "Harga paket transparan, sudah termasuk sewa modem."
   },
-  { 
-    title: "Edge-ready", 
-    description: "Runs anywhere: Node, Deno, Bun, browsers."
+  {
+    title: "Jadwal Fleksibel",
+    description: "Tentukan sendiri waktu kunjungan teknisi ke rumah."
   },
-  { 
-    title: "12KB gzipped", 
-    description: "Lightweight with zero dependencies."
+  {
+    title: "100% Fiber Optik",
+    description: "Jaringan kabel murni, stabil dalam segala cuaca."
   },
 ];
 
@@ -113,32 +114,29 @@ export function DevelopersSection() {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
           {/* Left: Content */}
           <div
-            className={`transition-all duration-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
           >
             <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
               <span className="w-8 h-px bg-foreground/30" />
-              For developers
+              Pendaftaran Baru
             </span>
             <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Built by devs.
+              Mulai Langkahmu.
               <br />
-              <span className="text-muted-foreground">For devs.</span>
+              <span className="text-muted-foreground">Gabung Sicakra.</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              A thoughtfully designed SDK that gets out of your way. 
-              Ship faster with intuitive APIs and exceptional documentation.
+              Nikmati kebebasan internetan tanpa batas di area Yogyakarta. Cukup ikuti simulasi langkah di samping dan daftarkan rumah atau bisnismu sekarang.
             </p>
-            
+
             {/* Features */}
             <div className="grid grid-cols-2 gap-6">
               {features.map((feature, index) => (
                 <div
                   key={feature.title}
-                  className={`transition-all duration-500 ${
-                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                  }`}
+                  className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                    }`}
                   style={{ transitionDelay: `${index * 50 + 200}ms` }}
                 >
                   <h3 className="font-medium mb-1">{feature.title}</h3>
@@ -147,12 +145,11 @@ export function DevelopersSection() {
               ))}
             </div>
           </div>
-          
+
           {/* Right: Code block */}
           <div
-            className={`lg:sticky lg:top-32 transition-all duration-700 delay-200 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-            }`}
+            className={`lg:sticky lg:top-32 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
+              }`}
           >
             <div className="border border-foreground/10">
               {/* Tabs */}
@@ -162,11 +159,10 @@ export function DevelopersSection() {
                     key={example.label}
                     type="button"
                     onClick={() => setActiveTab(idx)}
-                    className={`px-6 py-4 text-sm font-mono transition-colors relative ${
-                      activeTab === idx
-                        ? "text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+                    className={`px-6 py-4 text-sm font-mono transition-colors relative ${activeTab === idx
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground"
+                      }`}
                   >
                     {example.label}
                     {activeTab === idx && (
@@ -188,13 +184,13 @@ export function DevelopersSection() {
                   )}
                 </button>
               </div>
-              
+
               {/* Code content */}
               <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[220px]">
                 <pre className="text-foreground/80">
                   {codeExamples[activeTab].code.split('\n').map((line, lineIndex) => (
-                    <div 
-                      key={`${activeTab}-${lineIndex}`} 
+                    <div
+                      key={`${activeTab}-${lineIndex}`}
                       className="leading-loose dev-code-line"
                       style={{ animationDelay: `${lineIndex * 80}ms` }}
                     >
@@ -216,15 +212,15 @@ export function DevelopersSection() {
                 </pre>
               </div>
             </div>
-            
+
             {/* Links */}
             <div className="mt-6 flex items-center gap-6 text-sm">
-              <a href="#" className="text-foreground hover:underline underline-offset-4">
-                Read the docs
+              <a href="https://wa.me/nomor-wa-sicakra" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline underline-offset-4">
+                Hubungi CS via WhatsApp
               </a>
               <span className="text-foreground/20">|</span>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
-                View on GitHub
+              <a href="#pricing" className="text-muted-foreground hover:text-foreground">
+                Lihat Detail Harga Paket
               </a>
             </div>
           </div>
