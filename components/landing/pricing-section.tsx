@@ -5,50 +5,48 @@ import { ArrowRight, Check } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    description: "For individuals and small projects",
-    price: { monthly: 0, annual: 0 },
+    name: "Sicakra Lite",
+    description: "Cocok untuk mahasiswa, kontrakan, atau penggunaan 1-3 perangkat",
+    price: { monthly: 250000, annual: 240000 },
     features: [
-      "Up to 3 projects",
-      "1GB storage",
-      "Community support",
-      "Basic analytics",
-      "SSL certificates",
+      "Kecepatan up to 30 Mbps",
+      "100% True Unlimited (Tanpa FUP)",
+      "Download / Upload Simetris (1:1)",
+      "Gratis Pinjam Modem Dual-Band",
+      "Dukungan Teknisi via WA",
     ],
-    cta: "Start free",
+    cta: "Pilih Paket Lite",
     popular: false,
   },
   {
-    name: "Pro",
-    description: "For growing teams and businesses",
-    price: { monthly: 29, annual: 24 },
+    name: "Sicakra Reguler",
+    description: "Paling pas untuk kebutuhan keluarga ceria dan streaming 4K bersamaan",
+    price: { monthly: 350000, annual: 335000 },
     features: [
-      "Unlimited projects",
-      "100GB storage",
-      "Priority support",
-      "Advanced analytics",
-      "Custom domains",
-      "Team collaboration",
-      "API access",
+      "Kecepatan up to 50 Mbps",
+      "100% True Unlimited (Tanpa FUP)",
+      "Download / Upload Simetris (1:1)",
+      "Gratis Pinjam Modem Dual-Band",
+      "Prioritas Jalur Game & Streaming",
+      "Respon Teknisi < 4 Jam",
     ],
-    cta: "Start trial",
+    cta: "Pasang Sekarang",
     popular: true,
   },
   {
-    name: "Enterprise",
-    description: "For large-scale operations",
-    price: { monthly: null, annual: null },
+    name: "Sicakra Pro",
+    description: "Kapasitas besar untuk kebutuhan bisnis, kafe, atau kantor lokal",
+    price: { monthly: 550000, annual: 525000 },
     features: [
-      "Everything in Pro",
-      "Unlimited storage",
-      "24/7 dedicated support",
-      "Custom integrations",
-      "SLA guarantee",
-      "On-premise option",
-      "Security audit",
-      "Custom contracts",
+      "Kecepatan up to 100 Mbps",
+      "100% True Unlimited (Tanpa FUP)",
+      "Download / Upload Simetris (1:1)",
+      "Premium Router & Akses Poin Tambahan",
+      "Alokasi Bandwidth Bisnis Khusus",
+      "Layanan Prioritas 24/7 Dedikasi",
+      "Garansi Uptime Jaringan SLA",
     ],
-    cta: "Contact sales",
+    cta: "Hubungi Penjualan",
     popular: false,
   },
 ];
@@ -62,47 +60,45 @@ export function PricingSection() {
         {/* Header */}
         <div className="max-w-3xl mb-20">
           <span className="font-mono text-xs tracking-widest text-muted-foreground uppercase block mb-6">
-            Pricing
+            Daftar Paket
           </span>
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl tracking-tight text-foreground mb-6">
-            Simple, transparent
+            Harga simpel,
             <br />
-            <span className="text-stroke">pricing</span>
+            <span className="text-stroke">transparan.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl">
-            Start free and scale as you grow. No hidden fees, no surprises.
+            Pilih kecepatan sesuai kebutuhanmu. Flat selamanya, tanpa biaya tersembunyi, tanpa kejutan tagihan.
           </p>
         </div>
 
         {/* Billing Toggle */}
         <div className="flex items-center gap-4 mb-16">
           <span
-            className={`text-sm transition-colors ${
-              !isAnnual ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm transition-colors ${!isAnnual ? "text-foreground" : "text-muted-foreground"
+              }`}
           >
-            Monthly
+            Bayar Bulanan
           </span>
           <button
+            type="button"
             onClick={() => setIsAnnual(!isAnnual)}
             className="relative w-14 h-7 bg-foreground/10 rounded-full p-1 transition-colors hover:bg-foreground/20"
           >
             <div
-              className={`w-5 h-5 bg-foreground rounded-full transition-transform duration-300 ${
-                isAnnual ? "translate-x-7" : "translate-x-0"
-              }`}
+              className={`w-5 h-5 bg-foreground rounded-full transition-transform duration-300 ${isAnnual ? "translate-x-7" : "translate-x-0"
+                }`}
             />
           </button>
           <span
-            className={`text-sm transition-colors ${
-              isAnnual ? "text-foreground" : "text-muted-foreground"
-            }`}
+            className={`text-sm transition-colors ${isAnnual ? "text-foreground" : "text-muted-foreground"
+              }`}
           >
-            Annual
+            Langganan 1 Tahun
           </span>
           {isAnnual && (
             <span className="ml-2 px-2 py-1 bg-foreground text-primary-foreground text-xs font-mono">
-              Save 17%
+              Hemat hingga 5%
             </span>
           )}
         </div>
@@ -112,13 +108,12 @@ export function PricingSection() {
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
-              className={`relative p-8 lg:p-12 bg-background ${
-                plan.popular ? "md:-my-4 md:py-12 lg:py-16 border-2 border-foreground" : ""
-              }`}
+              className={`relative p-8 lg:p-12 bg-background ${plan.popular ? "md:-my-4 md:py-12 lg:py-16 border-2 border-foreground" : ""
+                }`}
             >
               {plan.popular && (
                 <span className="absolute -top-3 left-8 px-3 py-1 bg-foreground text-primary-foreground text-xs font-mono uppercase tracking-widest">
-                  Most Popular
+                  Paling Populer
                 </span>
               )}
 
@@ -133,15 +128,17 @@ export function PricingSection() {
 
               {/* Price */}
               <div className="mb-8 pb-8 border-b border-foreground/10">
-                {plan.price.monthly !== null ? (
-                  <div className="flex items-baseline gap-2">
-                    <span className="font-display text-5xl lg:text-6xl text-foreground">
-                      ${isAnnual ? plan.price.annual : plan.price.monthly}
-                    </span>
-                    <span className="text-muted-foreground">/month</span>
-                  </div>
-                ) : (
-                  <span className="font-display text-4xl text-foreground">Custom</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-xl font-display text-foreground mr-1">Rp</span>
+                  <span className="font-display text-4xl lg:text-5xl text-foreground">
+                    {(isAnnual ? plan.price.annual : plan.price.monthly).toLocaleString("id-ID")}
+                  </span>
+                  <span className="text-muted-foreground text-sm">/bulan</span>
+                </div>
+                {isAnnual && (
+                  <p className="text-xs text-muted-foreground mt-2 font-mono">
+                    * Ditagih sekaligus di awal tahun
+                  </p>
                 )}
               </div>
 
@@ -157,11 +154,10 @@ export function PricingSection() {
 
               {/* CTA */}
               <button
-                className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${
-                  plan.popular
-                    ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
-                    : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
-                }`}
+                className={`w-full py-4 flex items-center justify-center gap-2 text-sm font-medium transition-all group ${plan.popular
+                  ? "bg-foreground text-primary-foreground hover:bg-foreground/90"
+                  : "border border-foreground/20 text-foreground hover:border-foreground hover:bg-foreground/5"
+                  }`}
               >
                 {plan.cta}
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -172,9 +168,9 @@ export function PricingSection() {
 
         {/* Bottom Note */}
         <p className="mt-12 text-center text-sm text-muted-foreground">
-          All plans include automatic updates, HTTPS, and DDoS protection.{" "}
-          <a href="#" className="underline underline-offset-4 hover:text-foreground transition-colors">
-            Compare all features
+          Semua paket sudah termasuk gratis biaya sewa modem ONT, instalasi kabel jalur utama, dan proteksi jaringan berkelanjutan.{" "}
+          <a href="#registrasi" className="underline underline-offset-4 hover:text-foreground transition-colors">
+            Daftar pasang sekarang
           </a>
         </p>
       </div>
