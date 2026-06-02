@@ -4,36 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import { Copy, Check } from "lucide-react";
 
 const codeExamples = [
-  {
-    label: "01. Data Diri",
-    code: `> INPUT CUSTOMER DATA...
-
-Nama      : [Wajib Diisi]
-WhatsApp  : [Wajib Diisi]
-Lokasi    : Sleman, Yogyakarta
-
-* Pastikan nomor WhatsApp aktif untuk konfirmasi teknisi.`,
-  },
-  {
-    label: "02. Pilih Paket",
-    code: `> SELECT INTERNET PLAN...
-
-[ ] Sicakra Lite  - 30 Mbps
-[ ] Sicakra Reguler - 50 Mbps
-[ ] Sicakra Pro     - 100 Mbps
-
-* Semua paket True Unlimited tanpa batasan FUP.`,
-  },
-  {
-    label: "03. Pasang",
-    code: `> DEPLOYING TECHNICIAN...
-
-Status Jaringan : Tersedia (Fiber Optik)
-Estimasi Kerja  : Max 24 Jam setelah registrasi
-Biaya Registrasi: Rp 0 (Gratis Alat & Jalur)
-
-Ketik "GAS" untuk konfirmasi penjadwalan.`,
-  },
+  { label: "01. Data Diri", code: "" },
+  { label: "02. Pilih Paket", code: "" },
+  { label: "03. Lokasi Pasang", code: "" },
 ];
 
 const features = [
@@ -88,6 +61,20 @@ export function DevelopersSection() {
   const [copied, setCopied] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // --- HOOKS & HANDLERS SEKARANG SUDAH AMAN DI DALAM KOMPONEN ---
+  const [formData, setFormData] = useState({
+    name: "",
+    whatsapp: "",
+    package: "30-mbps",
+    address: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(codeExamples[activeTab].code);
@@ -185,31 +172,126 @@ export function DevelopersSection() {
                 </button>
               </div>
 
-              {/* Code content */}
-              <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[220px]">
-                <pre className="text-foreground/80">
-                  {codeExamples[activeTab].code.split('\n').map((line, lineIndex) => (
-                    <div
-                      key={`${activeTab}-${lineIndex}`}
-                      className="leading-loose dev-code-line"
-                      style={{ animationDelay: `${lineIndex * 80}ms` }}
-                    >
-                      <span className="inline-flex">
-                        {line.split('').map((char, charIndex) => (
-                          <span
-                            key={`${activeTab}-${lineIndex}-${charIndex}`}
-                            className="dev-code-char"
-                            style={{
-                              animationDelay: `${lineIndex * 80 + charIndex * 15}ms`,
-                            }}
+              {/* Code content diubah jadi Form Interaktif */}
+              <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[280px] flex flex-col justify-between">
+                {!isSubmitted ? (
+                  <div className="space-y-4">
+                    {/* TAB 1: DATA DIRI */}
+                    {activeTab === 0 && (
+                      <div className="space-y-4">
+                        <p className="text-xs text-muted-foreground">// Masukkan data kontak Anda</p>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Nama Lengkap</label>
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="Contoh: Budi Santoso"
+                            className="w-full bg-transparent border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Nomor WhatsApp</label>
+                          <input
+                            type="tel"
+                            name="whatsapp"
+                            value={formData.whatsapp}
+                            onChange={handleInputChange}
+                            placeholder="Contoh: 08123456789"
+                            className="w-full bg-transparent border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setActiveTab(1)}
+                          disabled={!formData.name || !formData.whatsapp}
+                          className="mt-2 text-xs text-foreground underline underline-offset-4 disabled:opacity-30"
+                        >
+                          Lanjut ke Pilih Paket →
+                        </button>
+                      </div>
+                    )}
+
+                    {/* TAB 2: PILIH PAKET */}
+                    {activeTab === 1 && (
+                      <div className="space-y-4">
+                        <p className="text-xs text-muted-foreground">// Pilih kecepatan internet rumahmu</p>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Paket Layanan</label>
+                          <select
+                            name="package"
+                            value={formData.package}
+                            onChange={handleInputChange}
+                            className="w-full bg-background border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors cursor-pointer"
                           >
-                            {char === ' ' ? '\u00A0' : char}
-                          </span>
-                        ))}
-                      </span>
+                            <option value="30-mbps">Sicakra Lite - 30 Mbps (Rp250.000/bln)</option>
+                            <option value="50-mbps">Sicakra Reguler - 50 Mbps (Rp350.000/bln)</option>
+                            <option value="100-mbps">Sicakra Pro - 100 Mbps (Rp550.000/bln)</option>
+                          </select>
+                        </div>
+                        <div className="flex gap-4">
+                          <button type="button" onClick={() => setActiveTab(0)} className="text-xs text-muted-foreground underline">← Kembali</button>
+                          <button type="button" onClick={() => setActiveTab(2)} className="text-xs text-foreground underline underline-offset-4">Lanjut ke Alamat →</button>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* TAB 3: LOKASI PASANG */}
+                    {activeTab === 2 && (
+                      <div className="space-y-4">
+                        <p className="text-xs text-muted-foreground">// Info koordinat penarikan kabel fiber optik</p>
+                        <div>
+                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Alamat Lengkap (Sleman/Jogja)</label>
+                          <textarea
+                            name="address"
+                            rows={3}
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan."
+                            className="w-full bg-transparent border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors resize-none"
+                          />
+                        </div>
+                        <div className="flex items-center justify-between pt-2">
+                          <button type="button" onClick={() => setActiveTab(1)} className="text-xs text-muted-foreground underline">← Kembali</button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              console.log("Data Registrasi Sicakra:", formData);
+                              setIsSubmitted(true);
+                            }}
+                            disabled={!formData.address}
+                            className="px-4 py-2 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30"
+                          >
+                            Kirim Formulir 🟢
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  /* TAMPILAN SUKSES */
+                  <div className="text-center py-6 space-y-3">
+                    <div className="w-10 h-10 border border-foreground rounded-full flex items-center justify-center mx-auto bg-foreground/5">
+                      <Check className="w-4 h-4 text-foreground" />
                     </div>
-                  ))}
-                </pre>
+                    <h3 className="text-lg font-medium">Data Terkirim!</h3>
+                    <p className="text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
+                      Halo <span className="text-foreground font-bold">{formData.name}</span>, lokasi pasangmu sedang dicek oleh tim area Sleman. Kami akan segera kabari lewat WhatsApp!
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setActiveTab(0);
+                        setFormData({ name: "", whatsapp: "", package: "30-mbps", address: "" });
+                      }}
+                      className="text-xs text-muted-foreground hover:text-foreground underline pt-2"
+                    >
+                      Isi ulang form
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
 
