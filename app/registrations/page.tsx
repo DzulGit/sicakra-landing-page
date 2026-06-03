@@ -150,13 +150,14 @@ export default function RegistrationsPage() {
 
             <div className={`p-6 lg:p-8 font-mono text-sm bg-foreground/[0.01] flex-1 flex flex-col relative overflow-hidden ${isFullScreen ? "overflow-y-auto" : ""}`}>
               
-              {/* Efek Wave dipindah ke dalam form */}
-              <div className="absolute bottom-0 left-0 right-0 h-64 opacity-20 pointer-events-none z-0">
+              {/* Efek Wave dengan mask-image agar transisi smooth dan z-0 agar di belakang form */}
+              <div className="absolute bottom-0 left-0 w-full h-40 md:h-56 opacity-10 pointer-events-none z-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%)]">
                 <AnimatedWave />
               </div>
 
               {!isSubmitted ? (
-                <div className="w-full h-full flex flex-col relative z-20">
+                /* Tambahan pb-12 dan z-10 memastikan form ada di atas wave dan tidak terlalu mepet bawah */
+                <div className="w-full h-full flex flex-col relative z-10 pb-12">
                   {/* TAB 1: DETAIL KONTAK */}
                   {activeTab === 0 && (
                     <div className="flex-1 flex flex-col justify-between space-y-6 animate-in fade-in duration-500">
@@ -245,7 +246,7 @@ export default function RegistrationsPage() {
                       </div>
 
                       <div className="pt-6 text-right border-t border-foreground/10 mt-6 relative z-20">
-                        <button type="button" onClick={() => setActiveTab(1)} className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors">
+                        <button type="button" onClick={() => setActiveTab(1)} className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors cursor-pointer">
                           Lanjut: Alamat Instalasi →
                         </button>
                       </div>
@@ -271,7 +272,7 @@ export default function RegistrationsPage() {
 
                       <div className="flex items-center justify-between pt-6 border-t border-foreground/10 mt-auto relative z-20">
                         <button type="button" onClick={() => setActiveTab(0)} className="text-xs text-muted-foreground hover:text-foreground transition-colors cursor-pointer relative z-30">← Kembali</button>
-                        <button type="button" onClick={() => setActiveTab(2)} className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors">
+                        <button type="button" onClick={() => setActiveTab(2)} className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors cursor-pointer">
                           Lanjut: Pesanan →
                         </button>
                       </div>
@@ -306,7 +307,7 @@ export default function RegistrationsPage() {
 
                         <div className="flex items-start gap-3 py-2">
                           <input type="checkbox" name="syaratKetentuan" checked={formData.syaratKetentuan} onChange={handleInputChange} className="mt-0.5 relative z-20" />
-                          <label className="text-xs text-muted-foreground leading-relaxed">
+                          <label className="text-xs text-muted-foreground leading-relaxed cursor-pointer">
                             Dengan ini saya menyatakan telah membaca dan setuju akan syarat dan ketentuan yang berlaku, serta menyatakan bahwa informasi yang saya berikan adalah benar.
                           </label>
                         </div>
@@ -322,7 +323,7 @@ export default function RegistrationsPage() {
                               setIsSubmitted(true);
                             }}
                             disabled={!formData.syaratKetentuan}
-                            className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30"
+                            className="px-8 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30 cursor-pointer"
                           >
                             Kirim Formulir
                           </button>
@@ -347,7 +348,7 @@ export default function RegistrationsPage() {
                         setIsSubmitted(false);
                         setActiveTab(0);
                       }}
-                      className="px-6 py-3 text-xs font-mono border border-foreground/20 text-foreground hover:bg-foreground/5 transition-colors"
+                      className="px-6 py-3 text-xs font-mono border border-foreground/20 text-foreground hover:bg-foreground/5 transition-colors cursor-pointer"
                     >
                       Isi ulang form
                     </button>

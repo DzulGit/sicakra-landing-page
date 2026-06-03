@@ -169,7 +169,7 @@ export function PricingSection() {
         {/* Bottom Note */}
         <p className="mt-12 text-center text-sm text-muted-foreground">
           Semua paket sudah termasuk gratis biaya sewa modem ONT, instalasi kabel jalur utama, dan proteksi jaringan berkelanjutan.{" "}
-          <a href="#registrasi" className="underline underline-offset-4 hover:text-foreground transition-colors">
+          <a href="registrations" className="underline underline-offset-4 hover:text-foreground transition-colors">
             Daftar pasang sekarang
           </a>
         </p>
