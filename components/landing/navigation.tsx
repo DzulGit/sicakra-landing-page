@@ -6,8 +6,8 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { name: "Fitur", href: "#features" },
-  { name: "Bagaimana Itu Bekerja", href: "#how-it-works" },
-  { name: "Developers", href: "#developers" },
+  { name: "Cara Berlangganan", href: "#how-it-works" },
+  { name: "Registrations", href: "#registrations" },
   { name: "Harga", href: "#pricing" },
 ];
 
