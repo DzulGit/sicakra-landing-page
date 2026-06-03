@@ -62,7 +62,6 @@ export function DevelopersSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // --- HOOKS & HANDLERS SEKARANG SUDAH AMAN DI DALAM KOMPONEN ---
   const [formData, setFormData] = useState({
     name: "",
     whatsapp: "",
@@ -77,6 +76,7 @@ export function DevelopersSection() {
   };
 
   const handleCopy = () => {
+    // Karena form interaktif, fungsi copy bisa disesuaikan, atau biarkan kosong sesuai array codeExamples
     navigator.clipboard.writeText(codeExamples[activeTab].code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -95,91 +95,85 @@ export function DevelopersSection() {
   }, []);
 
   return (
-    <section id="registrations" ref={sectionRef} className="relative py-24 lg:py-32 overflow-hidden">
+    <section 
+      id="registrations" 
+      ref={sectionRef} 
+      className="relative min-h-screen py-24 flex flex-col justify-center overflow-hidden bg-background"
+    >
       <style dangerouslySetInnerHTML={{ __html: codeAnimationStyles }} />
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-          {/* Left: Content */}
-          <div
-            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-          >
-            <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
-              <span className="w-8 h-px bg-foreground/30" />
-              Pendaftaran Baru
-            </span>
-            <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-8">
-              Mulai Langkahmu.
-              <br />
-              <span className="text-muted-foreground">Gabung Sicakra.</span>
-            </h2>
-            <p className="text-xl text-muted-foreground mb-12 leading-relaxed">
-              Nikmati kebebasan internetan tanpa batas di area Yogyakarta. Cukup ikuti simulasi langkah di samping dan daftarkan rumah atau bisnismu sekarang.
-            </p>
+      
+      <div className="max-w-[1200px] w-full mx-auto px-6 lg:px-12 space-y-16">
+        
+        {/* TOP: Header Content */}
+        <div
+          className={`flex flex-col items-center text-center max-w-3xl mx-auto transition-all duration-700 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <span className="inline-flex items-center gap-3 text-sm font-mono text-muted-foreground mb-6">
+            <span className="w-8 h-px bg-foreground/30" />
+            Pendaftaran Baru
+            <span className="w-8 h-px bg-foreground/30" />
+          </span>
+          <h2 className="text-4xl lg:text-6xl font-display tracking-tight mb-6">
+            Mulai Langkahmu.<br />
+            <span className="text-muted-foreground">Gabung Sicakra.</span>
+          </h2>
+          <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed">
+            Nikmati kebebasan internetan tanpa batas di area Yogyakarta. Cukup ikuti simulasi langkah di bawah dan daftarkan rumah atau bisnismu sekarang.
+          </p>
+        </div>
 
-            {/* Features */}
-            <div className="grid grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-                    }`}
-                  style={{ transitionDelay: `${index * 50 + 200}ms` }}
-                >
-                  <h3 className="font-medium mb-1">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right: Code block */}
-          <div
-            className={`lg:sticky lg:top-32 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
-              }`}
-          >
-            <div className="border border-foreground/10">
-              {/* Tabs */}
-              <div className="flex items-center border-b border-foreground/10">
-                {codeExamples.map((example, idx) => (
-                  <button
-                    key={example.label}
-                    type="button"
-                    onClick={() => setActiveTab(idx)}
-                    className={`px-6 py-4 text-sm font-mono transition-colors relative ${activeTab === idx
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                      }`}
-                  >
-                    {example.label}
-                    {activeTab === idx && (
-                      <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground" />
-                    )}
-                  </button>
-                ))}
-                <div className="flex-1" />
+        {/* MIDDLE: Interactive Form (Code Block Style) */}
+        <div
+          className={`w-full max-w-4xl mx-auto transition-all duration-700 delay-200 ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="border border-foreground/10 bg-background/50 backdrop-blur-sm shadow-2xl">
+            {/* Tabs */}
+            <div className="flex flex-wrap items-center border-b border-foreground/10 bg-foreground/[0.02]">
+              {codeExamples.map((example, idx) => (
                 <button
+                  key={example.label}
                   type="button"
-                  onClick={handleCopy}
-                  className="px-4 py-4 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Copy code"
+                  onClick={() => setActiveTab(idx)}
+                  className={`px-6 py-4 text-sm font-mono transition-colors relative flex-1 sm:flex-none text-center ${
+                    activeTab === idx
+                      ? "text-foreground bg-foreground/5"
+                      : "text-muted-foreground hover:text-foreground hover:bg-foreground/[0.02]"
+                  }`}
                 >
-                  {copied ? (
-                    <Check className="w-4 h-4 text-green-600" />
-                  ) : (
-                    <Copy className="w-4 h-4" />
+                  {example.label}
+                  {activeTab === idx && (
+                    <span className="absolute bottom-0 left-0 right-0 h-px bg-foreground" />
                   )}
                 </button>
-              </div>
+              ))}
+              <div className="hidden sm:flex flex-1" />
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="hidden sm:flex px-6 py-4 text-muted-foreground hover:text-foreground transition-colors border-l border-foreground/10"
+                aria-label="Copy code"
+              >
+                {copied ? (
+                  <Check className="w-4 h-4 text-green-600" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
+              </button>
+            </div>
 
-              {/* Code content diubah jadi Form Interaktif */}
-              <div className="p-8 font-mono text-sm bg-foreground/[0.01] min-h-[280px] flex flex-col justify-between">
-                {!isSubmitted ? (
-                  <div className="space-y-4">
-                    {/* TAB 1: DATA DIRI */}
-                    {activeTab === 0 && (
-                      <div className="space-y-4">
-                        <p className="text-xs text-muted-foreground">// Masukkan data kontak Anda</p>
+            {/* Form Content */}
+            <div className="p-8 lg:p-12 font-mono text-sm bg-foreground/[0.01] min-h-[320px] flex flex-col justify-center">
+              {!isSubmitted ? (
+                <div className="max-w-2xl mx-auto w-full space-y-6">
+                  {/* TAB 1: DATA DIRI */}
+                  {activeTab === 0 && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                      <p className="text-xs text-muted-foreground">// Masukkan data kontak Anda</p>
+                      <div className="grid sm:grid-cols-2 gap-6">
                         <div>
                           <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Nama Lengkap</label>
                           <input
@@ -202,83 +196,97 @@ export function DevelopersSection() {
                             className="w-full bg-transparent border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors"
                           />
                         </div>
+                      </div>
+                      <div className="pt-4 text-right">
                         <button
                           type="button"
                           onClick={() => setActiveTab(1)}
                           disabled={!formData.name || !formData.whatsapp}
-                          className="mt-2 text-xs text-foreground underline underline-offset-4 disabled:opacity-30"
+                          className="px-6 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30"
                         >
-                          Lanjut ke Pilih Paket →
+                          Lanjut: Pilih Paket →
                         </button>
                       </div>
-                    )}
-
-                    {/* TAB 2: PILIH PAKET */}
-                    {activeTab === 1 && (
-                      <div className="space-y-4">
-                        <p className="text-xs text-muted-foreground">// Pilih kecepatan internet rumahmu</p>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Paket Layanan</label>
-                          <select
-                            name="package"
-                            value={formData.package}
-                            onChange={handleInputChange}
-                            className="w-full bg-background border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors cursor-pointer"
-                          >
-                            <option value="30-mbps">Sicakra Lite - 30 Mbps (Rp250.000/bln)</option>
-                            <option value="50-mbps">Sicakra Reguler - 50 Mbps (Rp350.000/bln)</option>
-                            <option value="100-mbps">Sicakra Pro - 100 Mbps (Rp550.000/bln)</option>
-                          </select>
-                        </div>
-                        <div className="flex gap-4">
-                          <button type="button" onClick={() => setActiveTab(0)} className="text-xs text-muted-foreground underline">← Kembali</button>
-                          <button type="button" onClick={() => setActiveTab(2)} className="text-xs text-foreground underline underline-offset-4">Lanjut ke Alamat →</button>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* TAB 3: LOKASI PASANG */}
-                    {activeTab === 2 && (
-                      <div className="space-y-4">
-                        <p className="text-xs text-muted-foreground">// Info koordinat penarikan kabel fiber optik</p>
-                        <div>
-                          <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Alamat Lengkap (Sleman/Jogja)</label>
-                          <textarea
-                            name="address"
-                            rows={3}
-                            value={formData.address}
-                            onChange={handleInputChange}
-                            placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan."
-                            className="w-full bg-transparent border border-foreground/10 px-4 py-3 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors resize-none"
-                          />
-                        </div>
-                        <div className="flex items-center justify-between pt-2">
-                          <button type="button" onClick={() => setActiveTab(1)} className="text-xs text-muted-foreground underline">← Kembali</button>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              console.log("Data Registrasi Sicakra:", formData);
-                              setIsSubmitted(true);
-                            }}
-                            disabled={!formData.address}
-                            className="px-4 py-2 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30"
-                          >
-                            Kirim Formulir 🟢
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  /* TAMPILAN SUKSES */
-                  <div className="text-center py-6 space-y-3">
-                    <div className="w-10 h-10 border border-foreground rounded-full flex items-center justify-center mx-auto bg-foreground/5">
-                      <Check className="w-4 h-4 text-foreground" />
                     </div>
-                    <h3 className="text-lg font-medium">Data Terkirim!</h3>
-                    <p className="text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
-                      Halo <span className="text-foreground font-bold">{formData.name}</span>, lokasi pasangmu sedang dicek oleh tim area Sleman. Kami akan segera kabari lewat WhatsApp!
-                    </p>
+                  )}
+
+                  {/* TAB 2: PILIH PAKET */}
+                  {activeTab === 1 && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                      <p className="text-xs text-muted-foreground">// Pilih kecepatan internet rumahmu</p>
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Paket Layanan</label>
+                        <select
+                          name="package"
+                          value={formData.package}
+                          onChange={handleInputChange}
+                          className="w-full bg-background border border-foreground/10 px-4 py-4 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors cursor-pointer"
+                        >
+                          <option value="30-mbps">Sicakra Lite - 30 Mbps (Rp250.000/bln)</option>
+                          <option value="50-mbps">Sicakra Reguler - 50 Mbps (Rp350.000/bln)</option>
+                          <option value="100-mbps">Sicakra Pro - 100 Mbps (Rp550.000/bln)</option>
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between pt-4">
+                        <button type="button" onClick={() => setActiveTab(0)} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                          ← Kembali
+                        </button>
+                        <button
+                          type="button" 
+                          onClick={() => setActiveTab(2)} 
+                          className="px-6 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors"
+                        >
+                          Lanjut: Lokasi Pasang →
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 3: LOKASI PASANG */}
+                  {activeTab === 2 && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                      <p className="text-xs text-muted-foreground">// Info koordinat penarikan kabel fiber optik</p>
+                      <div>
+                        <label className="block text-xs uppercase tracking-wider mb-2 text-muted-foreground">Alamat Lengkap (Sleman/Jogja)</label>
+                        <textarea
+                          name="address"
+                          rows={4}
+                          value={formData.address}
+                          onChange={handleInputChange}
+                          placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan."
+                          className="w-full bg-transparent border border-foreground/10 px-4 py-4 text-sm focus:outline-none focus:border-foreground/40 text-foreground transition-colors resize-none"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between pt-4">
+                        <button type="button" onClick={() => setActiveTab(1)} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                          ← Kembali
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            console.log("Data Registrasi Sicakra:", formData);
+                            setIsSubmitted(true);
+                          }}
+                          disabled={!formData.address}
+                          className="px-6 py-3 border border-foreground bg-foreground text-background text-xs font-mono font-medium hover:bg-foreground/90 transition-colors disabled:opacity-30"
+                        >
+                          Kirim Formulir 🟢
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                /* TAMPILAN SUKSES */
+                <div className="text-center py-12 space-y-4 animate-in zoom-in-95 duration-500">
+                  <div className="w-16 h-16 border border-foreground rounded-full flex items-center justify-center mx-auto bg-foreground/5 mb-6">
+                    <Check className="w-8 h-8 text-foreground" />
+                  </div>
+                  <h3 className="text-2xl font-display tracking-tight">Data Terkirim!</h3>
+                  <p className="text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+                    Halo <span className="text-foreground font-bold">{formData.name}</span>, lokasi pasangmu sedang dicek oleh tim area Sleman. Kami akan segera kabari lewat WhatsApp!
+                  </p>
+                  <div className="pt-6">
                     <button
                       type="button"
                       onClick={() => {
@@ -286,27 +294,47 @@ export function DevelopersSection() {
                         setActiveTab(0);
                         setFormData({ name: "", whatsapp: "", package: "30-mbps", address: "" });
                       }}
-                      className="text-xs text-muted-foreground hover:text-foreground underline pt-2"
+                      className="px-6 py-3 text-xs font-mono border border-foreground/20 text-foreground hover:bg-foreground/5 transition-colors"
                     >
                       Isi ulang form
                     </button>
                   </div>
-                )}
-              </div>
-            </div>
-
-            {/* Links */}
-            <div className="mt-6 flex items-center gap-6 text-sm">
-              <a href="https://wa.me/nomor-wa-sicakra" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline underline-offset-4">
-                Hubungi CS via WhatsApp
-              </a>
-              <span className="text-foreground/20">|</span>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground">
-                Lihat Detail Harga Paket
-              </a>
+                </div>
+              )}
             </div>
           </div>
+          
+          {/* Links Below Form */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-sm">
+            <a href="https://wa.me/nomor-wa-sicakra" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline underline-offset-4">
+              Hubungi CS via WhatsApp
+            </a>
+            <span className="hidden sm:block text-foreground/20">|</span>
+            <a href="#pricing" className="text-muted-foreground hover:text-foreground">
+              Lihat Detail Harga Paket
+            </a>
+          </div>
         </div>
+
+        {/* BOTTOM: Features Grid */}
+        <div className="pt-12 border-t border-foreground/10 w-full max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 text-center sm:text-left">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className={`transition-all duration-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${index * 100 + 400}ms` }}
+              >
+                <div className="w-8 h-px bg-foreground mb-4 mx-auto sm:mx-0" />
+                <h3 className="font-medium mb-2 text-foreground">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

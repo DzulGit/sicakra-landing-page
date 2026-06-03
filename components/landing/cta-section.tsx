@@ -61,7 +61,7 @@ export function CtaSection() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <a href="#registrasi" className="w-full sm:w-auto">
+                  <a href="/registrations" className="w-full sm:w-auto">
                     <Button
                       size="lg"
                       className="w-full bg-foreground hover:bg-foreground/90 text-background px-8 h-14 text-base rounded-full group flex items-center justify-center"

@@ -65,7 +65,7 @@ export function Navigation() {
             <a href="#infrastructure" className={`text-foreground/70 hover:text-foreground transition-all duration-500 ${isScrolled ? "text-xs" : "text-sm"}`}>
               Cek Area
             </a>
-            <a href="#registrations">
+            <a href="/registrations">
               <Button
                 size="sm"
                 className={`bg-foreground hover:bg-foreground/90 text-background rounded-full transition-all duration-500 ${isScrolled ? "px-4 h-8 text-xs" : "px-6"}`}
