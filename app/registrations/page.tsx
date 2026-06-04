@@ -151,7 +151,7 @@ export default function RegistrationsPage() {
             <div className={`p-6 lg:p-8 font-mono text-sm bg-foreground/[0.01] flex-1 flex flex-col relative overflow-hidden ${isFullScreen ? "overflow-y-auto" : ""}`}>
               
               {/* Efek Wave dengan mask-image agar transisi smooth dan z-0 agar di belakang form */}
-              <div className="absolute bottom-0 left-0 w-full h-40 md:h-56 opacity-10 pointer-events-none z-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%)]">
+              <div className="absolute bottom-0 left-0 w-full h-40 md:h-56 opacity-35 pointer-events-none z-0 [mask-image:linear-gradient(to_bottom,transparent_0%,black_70%)]">
                 <AnimatedWave />
               </div>
 
