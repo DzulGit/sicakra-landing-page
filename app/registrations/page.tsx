@@ -98,16 +98,21 @@ export default function RegistrationsPage() {
     try {
       let ktpPhotoUrl: string | undefined;
       let housePhotoUrl: string | undefined;
+      
       if (ktpFile) ktpPhotoUrl = await uploadFile(ktpFile, 'ktp');
       if (houseFile) housePhotoUrl = await uploadFile(houseFile, 'house');
 
+      // 🔥 TRIKNYA DI SINI: Kita pisahkan agreeTerms agar tidak ikut terkirim ke backend
+      const { agreeTerms, ...dataYangDikirim } = formData;
+
       await submitRegistration({
-        ...formData,
+        ...dataYangDikirim, // 👈 Kirim sisa datanya yang sudah bersih
         ktpPhotoUrl,
         housePhotoUrl,
         buildingType: formData.buildingType as any,
         ownershipStatus: formData.ownershipStatus as any,
       });
+      
       setIsSubmitted(true);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Terjadi kesalahan server');
