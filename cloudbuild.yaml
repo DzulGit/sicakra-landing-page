@@ -2,7 +2,8 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
-      - '-t'
+      - '--build-arg'
+      - 'NEXT_PUBLIC_API_URL=https://sicakra-api-qgjaoib32q-et.a.run.app'
       - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/sicakra/sicakra-landing-page:$SHORT_SHA'
       - '-t'
       - 'asia-southeast2-docker.pkg.dev/$PROJECT_ID/sicakra/sicakra-landing-page:latest'
