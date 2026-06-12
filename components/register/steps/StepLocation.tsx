@@ -9,6 +9,17 @@ const OWNERSHIP_LABELS: Record<string, string> = {
 };
 
 export function StepLocation({ formData, setFormData, onNext, onBack, labelClass }: any) {
+  const handleNext = () => {
+    if (formData.latitude === 0 || formData.longitude === 0) {
+      alert("Harap pin lokasi pada peta terlebih dahulu.");
+      return;
+    }
+    if (!formData.buildingType || !formData.ownershipStatus) {
+      alert("Harap pilih jenis bangunan dan status kepemilikan.");
+      return;
+    }
+    onNext();
+  };
   return (
     <div className="space-y-8 animate-in fade-in duration-300">
       <div>

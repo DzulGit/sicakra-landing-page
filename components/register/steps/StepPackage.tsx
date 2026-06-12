@@ -1,6 +1,13 @@
 import React from "react";
 
 export function StepPackage({ formData, setFormData, onChange, packages, onNext, onBack, inputClass, labelClass }: any) {
+  const handleNext = () => {
+    if (!formData.packageId) {
+      alert("Harap pilih paket layanan terlebih dahulu.");
+      return;
+    }
+    onNext();
+  };
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       <div>

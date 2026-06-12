@@ -1,6 +1,13 @@
 import React from "react";
 
 export function StepAddress({ formData, onChange, onNext, onBack, inputClass, labelClass }: any) {
+  const handleNext = () => {
+    if (!formData.address || !formData.rtRw || !formData.village || !formData.district || !formData.city) {
+      alert("Harap lengkapi semua alamat yang wajib diisi (*).");
+      return;
+    }
+    onNext();
+  };
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

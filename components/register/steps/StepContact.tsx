@@ -1,6 +1,13 @@
 import React from "react";
 
 export function StepContact({ formData, onChange, onNext, inputClass, labelClass }: any) {
+  const handleNext = () => {
+    if (!formData.fullName || !formData.phone || !formData.email || !formData.job) {
+      alert("Harap lengkapi semua data kontak yang wajib diisi (*).");
+      return;
+    }
+    onNext();
+  };
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

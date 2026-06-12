@@ -183,7 +183,14 @@ export default function RegistrationsPage() {
                   key={tab.label}
                   type="button"
                   disabled={isSubmitted}
-                  onClick={() => setActiveTab(idx)}
+                  onClick={() => {
+                    if (idx === 1 && (!formData.fullName || !formData.phone || !formData.email || !formData.job)) return alert("Isi form Kontak dulu.");
+                    if (idx === 2 && (!formData.address || !formData.rtRw || !formData.village || !formData.district || !formData.city)) return alert("Isi form Alamat dulu.");
+                    if (idx === 3 && (!formData.buildingType || !formData.ownershipStatus || formData.latitude === 0)) return alert("Isi form Lokasi dulu.");
+                    if (idx === 4 && (!formData.packageId)) return alert("Pilih Paket dulu.");
+                    
+                    setActiveTab(idx);
+                  }}
                   className={cn(
                     "px-4 py-4 text-xs font-mono flex-1 text-center whitespace-nowrap transition-all border-b-2 border-transparent",
                     activeTab === idx ? "text-foreground bg-foreground/[0.02] font-bold border-foreground" : "text-muted-foreground/60"
